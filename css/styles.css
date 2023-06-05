@@ -4,68 +4,175 @@
     box-sizing: border-box;
 }
 #contenedorTarjetas{
+    margin-top: 60px;
+    margin-bottom: 100px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    row-gap: 60px;
+
 }
+
+#tituloProductos {
+    margin-top: 60px;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#tituloProductos h3 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(54, 54, 54);
+    font-size: 36px;
+    text-align: center;
+    justify-content: center;
+}
+
 .tarjeta{
-    width: 250px;
+    width: 350px;
     height: 450px;
-    border: 1px solid;
-    border-radius: 5px;
+    background-color: white;
+    filter: drop-shadow(0px 10px 20px rgba(134, 171, 191, 0.2));
+    border-radius: 10px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin: 10px;
-
 }
+
 .tarjeta .contenido {
-    padding: 10px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 .tarjeta img{
     width: inherit;
-    height: 150px;
+    height: 200px;
     object-fit: cover;
 }
 
 .tarjeta button {
     border: none;
-    background-color: blue;
+    background: linear-gradient(180deg, rgba(139, 169, 191, 0.67) 0%, #7FA5B5 100%);    
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
     margin: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+}
+
+.tarjeta button:hover {
+    background: linear-gradient(180deg, rgba(139, 169, 191, 0.866) 0%, #486f80 100%);    
+}
+
+.tarjeta input{
+    margin-left: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background: rgb(238, 238, 238);  
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: rgb(54, 54, 54);
+}
+
+.tarjeta h3{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(54, 54, 54);
+}
+
+.tarjeta p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    line-height : 25px;
+    color: #525252;
+}
+
+.tarjeta span{
+    position: absolute;
+    background-color: white;
+    color: rgb(54, 54, 54);
+    padding: 10px;
+    border-radius: 5px;
+    top: 10px;
+    right: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 18px;
+}
+
+.tarjetaAction {
+    position: absolute;
+    bottom: 10px;
 }
 
 .encabezado{
     width: 100%;
     height: 80px;
-    background-color: blue;
+    padding-left: 40px;
+    background-color: rgb(231, 241, 243);
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
 }
+
+.encabezado h2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 30px;
+}
+
+.footer{
+    width: 100%;
+    height: 80px;
+    background-color: rgb(231, 241, 243);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+}
+
+#logo h3 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color: rgb(54, 54, 54);
+
+}
+
 #carrito{
     padding: 20px;
+    width: 80px;
+    height: 80px;
+    background-color: rgb(40, 51, 53);
     color: white;
     display: flex;
     align-items: center;
-    position: relative;
+    justify-content: center;
 }
 
 #carrito i {
-    font-size: 24px;
+    font-size: 30px;
+
 }
 #carrito span {
-    background-color: rgb(5, 5, 87);
-    width: 20px;
-    height: 20px;
+    background-color: rgb(63, 98, 105);
+    filter: drop-shadow(0px 10px 20px rgba(134, 171, 191, 0.2));
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    top: 50px;
-    left: 40px;
+    top: 5px;
+    right: 5px;
 }
