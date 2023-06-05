@@ -14,7 +14,7 @@
 }
 
 #tituloProductos {
-    margin-top: 60px;
+    margin-top: 140px;
     height: 80px;
     width: 100%;
     display: flex;
@@ -33,7 +33,7 @@
 
 .tarjeta{
     width: 350px;
-    height: 450px;
+    height: 500px;
     background-color: white;
     filter: drop-shadow(0px 10px 20px rgba(134, 171, 191, 0.2));
     border-radius: 10px;
@@ -72,7 +72,6 @@
 }
 
 .tarjeta input{
-    margin-left: 20px;
     padding: 10px 20px;
     border-radius: 5px;
     border: none;
@@ -108,9 +107,13 @@
 .tarjetaAction {
     position: absolute;
     bottom: 10px;
+    margin-left: 20px;
 }
 
 .encabezado{
+    position: fixed;
+    top: 0px;
+    z-index: 10;
     width: 100%;
     height: 80px;
     padding-left: 40px;

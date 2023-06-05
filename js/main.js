@@ -97,52 +97,70 @@ const productos = [
     },
 ]
 
-const carrito = JSON.parse(localStorage.getItem("carrito")) ?? []
+let carrito = [];
 
-const verProducto = ({id,nombre,precio,descripcion,stock,urlImg}) =>{
-    const contenedorTarjetas = document.querySelector("#contenedorTarjetas")
-    const tarjeta = document.createElement("div")
-    tarjeta.className = "tarjeta"
-    tarjeta.innerHTML = `
-                        <img src="${urlImg}" alt="">
-                        <div class="contenido">
-                            <h3>${nombre}</h3>
-                            <p>${descripcion}</p>
-                            <span><b>💰</b> $${precio}</span>
-                        </div>
-                        <form id="formCarrito${id}">
-                        <div class="tarjetaAction">
-                            <input name="id" type="hidden" value="${id}">
-                            <input name="cantidad" type="number" value="1" min="1" max="${stock}">
-                            <button type="submit">Agregar</button>
-                        </div>
-                        </form>
-                        
-    `
-    contenedorTarjetas.append(tarjeta)
-}
+const verProducto = ({ id, nombre, precio, descripcion, stock, urlImg }) => {
+  const contenedorTarjetas = document.querySelector("#contenedorTarjetas");
+  const tarjeta = document.createElement("div");
+  tarjeta.className = "tarjeta";
+  tarjeta.innerHTML = `
+    <img src="${urlImg}" alt="">
+    <div class="contenido">
+        <h3>${nombre}</h3>
+        <p>${descripcion}</p>
+        <span><b>💰</b> $${precio}</span>
+    </div>
+    <form id="formCarrito${id}">
+        <div class="tarjetaAction">
+            <p>Quedan ${stock} unidades.</p>
+            <input name="id" type="hidden" value="${id}">
+            <input name="cantidad" type="number" value="1" min="1" max="${stock}">
+            <button id="submit" type="submit">Agregar</button>
+        </div>
+    </form>`;
+  contenedorTarjetas.append(tarjeta);
+};
 
-const agregarCarrito = (id) =>{
-    const formCarrito = document.querySelector("#formCarrito" + id)
-    formCarrito.addEventListener("submit",(e)=>{
-        e.preventDefault()
-        const cantidad = e.target.children["cantidad"].value
-        carrito.push({
-            id,
-            cantidad
-        })
-        localStorage.setItem("carrito",JSON.stringify(carrito))
-    })
-}
-const verProductos = () =>{
+const agregarCarrito = (id, stock) => {
+  const formCarrito = document.querySelector("#formCarrito" + id);
+  formCarrito.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const cantidad = parseInt(e.target.elements["cantidad"].value);
+    if (cantidad > stock) {
+      alert("No hay suficiente stock disponible.");
+      return;
+    }
+    carrito.push({
+      id,
+      cantidad,
+    });
+    localStorage.setItem("carrito", JSON.stringify(carrito));
 
-    productos.forEach(producto =>{
-        if(producto.stock !=0){
-            verProducto(producto)
-            agregarCarrito(producto.id)
-        }
-        
-    })
-}
+    // Actualizar contador del carrito
+    const contadorCarrito = document.getElementById("contadorCarrito");
+    contadorCarrito.textContent = carrito.reduce((total, item) => total + item.cantidad, 0);
 
-verProductos()
+    // Limpiar el formulario
+    e.target.reset();
+  });
+};
+
+const verProductos = () => {
+  productos.forEach((producto) => {
+    if (producto.stock !== 0) {
+      verProducto(producto);
+      agregarCarrito(producto.id, producto.stock);
+    }
+  });
+};
+
+// Actualizar contador del carrito al cargar la página
+const contadorCarrito = document.getElementById("contadorCarrito");
+contadorCarrito.textContent = carrito.reduce((total, item) => total + item.cantidad, 0);
+
+// Limpiar carrito al recargar la página
+window.addEventListener("beforeunload", () => {
+  localStorage.removeItem("carrito");
+});
+
+verProductos();
