@@ -13,6 +13,20 @@
 
 }
 
+
+.notificacion {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #ffffff;
+    color: rgb(54, 54, 54);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 20px 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
 #tituloProductos {
     margin-top: 140px;
     height: 80px;
